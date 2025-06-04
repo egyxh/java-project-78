@@ -20,7 +20,7 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
      */
     public MapSchema<K, V> sizeof(final int size) {
         this.isSizeRequired = true;
-        this.requiredSize = requiredSize;
+        this.requiredSize = size;
         return this;
     }
 
