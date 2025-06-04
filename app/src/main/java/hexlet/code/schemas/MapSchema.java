@@ -5,6 +5,9 @@ import java.util.Map;
 
 /**
  * Схема валидации для Map.
+ *
+ * @param <K> тип ключей в Map.
+ * @param <V> тип значений в Map.
  */
 public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
 
@@ -56,10 +59,11 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
     }
 
     /**
-     * Метод для установки пар Key-Value, где ключ - это ключ, к которому применяется проверка на валидность,
-     * а значение - это параметры для необходимой проверки.
+     * Устанавливает схемы валидации для значений Map по ключам.
      *
-     * @param schemas Map с парами ключ-проверка валидности для этого ключа.
+     * @param <T> тип ключа (должен быть подтипом K).
+     * @param <U> тип значения (должен быть подтипом V).
+     * @param schemas Map с правилами валидации для соответствующих ключей.
      */
     @SuppressWarnings("unchecked")
     public <T extends K, U extends V> void shape(final Map<T, BaseSchema<U>> schemas) {
