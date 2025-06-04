@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Тесты на работоспособность валидатора данных.
+ */
 public class ValidatorTest {
 
     private Validator v;
@@ -21,6 +24,9 @@ public class ValidatorTest {
         v = new Validator();
     }
 
+    /**
+     * Тест на работу валидатора строк по дефолту и с required().
+     */
     @Test
     void testStringSchemaBasic() {
         StringSchema schema = v.string();
@@ -34,6 +40,9 @@ public class ValidatorTest {
         assertTrue(schema.isValid("test"));
     }
 
+    /**
+     * Тест на работу валидатора строк с установкой необходимого содержания подстроки.
+     */
     @Test
     void testStringSchemaContains() {
         StringSchema schema = v.string().required();
@@ -43,6 +52,9 @@ public class ValidatorTest {
         assertFalse(schema.isValid("just a test"));
     }
 
+    /**
+     * Тест на работу валидатора строк с установкой минимальной длины строки.
+     */
     @Test
     void testStringSchemaMinLength() {
         StringSchema schema = v.string().required();
@@ -53,6 +65,9 @@ public class ValidatorTest {
         assertFalse(schema.isValid("test"));
     }
 
+    /**
+     * Тест на работу валидатора чисел по дефолту и с required().
+     */
     @Test
     void testNumberSchemaBasic() {
         NumberSchema schema = v.number();
@@ -64,6 +79,9 @@ public class ValidatorTest {
         assertTrue(schema.isValid(10));
     }
 
+    /**
+     * Тест на работу валидатора чисел с установкой проверки на положительное число.
+     */
     @Test
     void testNumberSchemaPositive() {
         NumberSchema schema = v.number().positive();
@@ -73,6 +91,9 @@ public class ValidatorTest {
         assertTrue(schema.isValid(1.0));
     }
 
+    /**
+     * Тест на работу валидатора чисел с установкой диапозона (включительно).
+     */
     @Test
     void testNumberSchemaRange() {
         NumberSchema schema = v.number().range(5, 10);
@@ -83,6 +104,9 @@ public class ValidatorTest {
         assertFalse(schema.isValid(12));
     }
 
+    /**
+     * Тест на работу валидатора Map с установкой проверки на размер Map.
+     */
     @Test
     void testMapSchemaRequiredSize() {
         MapSchema schema = v.map();
@@ -100,6 +124,9 @@ public class ValidatorTest {
         assertFalse(schema.isValid(new HashMap<>()));
     }
 
+    /**
+     * Тест на работу валидатора Map с установкой подВалидаторов на значения для ключей в Map.
+     */
     @Test
     void testMapSchemaShapeValid() {
         MapSchema schema = v.map();
