@@ -95,7 +95,7 @@ public class ValidatorTest {
         Map<String, String> map = Map.of("key", "value", "key2", "value2");
         assertTrue(schema.isValid(map));
 
-        schema.sizeOf(2);
+        schema.sizeof(2);
         assertTrue(schema.isValid(map));
         assertFalse(schema.isValid(new HashMap<>()));
     }

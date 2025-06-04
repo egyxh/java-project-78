@@ -9,7 +9,7 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
     private boolean isSizeRequired = false;
     private Map<K, BaseSchema<? super V>> shapeSchemas = new HashMap<K, BaseSchema<? super V>>();
 
-    public MapSchema<K, V> sizeOf(final int requiredSize) {
+    public MapSchema<K, V> sizeof(final int requiredSize) {
         this.isSizeRequired = true;
         this.requiredSize = requiredSize;
         return this;
