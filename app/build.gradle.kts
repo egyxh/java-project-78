@@ -26,3 +26,7 @@ sonar {
         property("sonar.host.url", "https://sonarcloud.io")
     }
 }
+
+tasks.withType<JavaCompile>() {
+    options.compilerArgs.add("-Xlint:unchecked")
+}
