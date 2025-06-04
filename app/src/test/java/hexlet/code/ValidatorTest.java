@@ -19,6 +19,9 @@ public class ValidatorTest {
 
     private Validator v;
 
+    /**
+     * Создание экземпляра валидатора перед каждым тестом.
+     */
     @BeforeEach
     void setUpValidator() {
         v = new Validator();

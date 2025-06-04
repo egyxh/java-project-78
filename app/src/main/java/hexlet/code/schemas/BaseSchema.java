@@ -26,7 +26,7 @@ public abstract class BaseSchema<T> {
     /**
      * Метод добавляет проверку на NotNull.
      *
-     * @return
+     * @return текущую схему.
      */
     public BaseSchema<T> required() {
         this.isRequired = true;
@@ -41,6 +41,11 @@ public abstract class BaseSchema<T> {
      */
     protected abstract boolean checkValid(T value);
 
+    /**
+     * Геттер для поля isRequired класса BaseSchema.
+     *
+     * @return значение поля isRequired.
+     */
     protected boolean getIsRequired() {
         return this.isRequired;
     }

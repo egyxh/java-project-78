@@ -15,10 +15,10 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
     /**
      * Метод для установки точного значения, которому должен соответствовать размер Map.
      *
-     * @param requiredSize число - необхожимый размер.
+     * @param size число - необхожимый размер.
      * @return текущую схему.
      */
-    public MapSchema<K, V> sizeof(final int requiredSize) {
+    public MapSchema<K, V> sizeof(final int size) {
         this.isSizeRequired = true;
         this.requiredSize = requiredSize;
         return this;
@@ -60,8 +60,6 @@ public class MapSchema<K, V> extends BaseSchema<Map<K, V>> {
      * а значение - это параметры для необходимой проверки.
      *
      * @param schemas Map с парами ключ-проверка валидности для этого ключа.
-     * @param <T>     обобщенный тип, для возврата любого типа ключа.
-     * @param <U>     обобщенный тип для возврата любого типа значения.
      */
     @SuppressWarnings("unchecked")
     public <T extends K, U extends V> void shape(final Map<T, BaseSchema<U>> schemas) {
