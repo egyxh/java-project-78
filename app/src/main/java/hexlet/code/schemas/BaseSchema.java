@@ -29,7 +29,7 @@ public abstract class BaseSchema<T> {
 
     public abstract BaseSchema<T> required();
 
-    public void setRequired(boolean value) {
+    public final void setRequired(boolean value) {
         this.isRequired = value;
     }
 
