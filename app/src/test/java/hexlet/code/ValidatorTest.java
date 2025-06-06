@@ -48,7 +48,8 @@ public class ValidatorTest {
      */
     @Test
     void testStringSchemaContains() {
-        StringSchema schema = v.string().required();
+        StringSchema schema = v.string()
+                .required();
         schema.contains("third");
 
         assertTrue(schema.isValid("test for third project"));
@@ -60,7 +61,8 @@ public class ValidatorTest {
      */
     @Test
     void testStringSchemaMinLength() {
-        StringSchema schema = v.string().required();
+        StringSchema schema = v.string()
+                .required();
         schema.minLength(5);
 
         assertTrue(schema.isValid("test for third project"));
@@ -87,7 +89,8 @@ public class ValidatorTest {
      */
     @Test
     void testNumberSchemaPositive() {
-        NumberSchema schema = v.number().positive();
+        NumberSchema schema = v.number()
+                .positive();
 
         assertFalse(schema.isValid(-1));
         assertFalse(schema.isValid(0));
@@ -99,7 +102,9 @@ public class ValidatorTest {
      */
     @Test
     void testNumberSchemaRange() {
-        NumberSchema schema = v.number().range(5, 10);
+        NumberSchema schema = v.number()
+                .required()
+                .range(5, 10);
 
         assertFalse(schema.isValid(-1));
         assertTrue(schema.isValid(6));
@@ -136,8 +141,14 @@ public class ValidatorTest {
         schema.required();
 
         Map<String, BaseSchema<String>> shape = new HashMap<>();
-        shape.put("name", v.string().required().minLength(3));
-        shape.put("email", v.string().required().contains("@"));
+        shape.put("name",
+                v.string()
+                        .required()
+                        .minLength(3));
+        shape.put("email",
+                v.string()
+                        .required()
+                        .contains("@"));
 
         schema.shape(shape);
 

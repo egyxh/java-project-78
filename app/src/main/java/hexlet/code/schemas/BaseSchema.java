@@ -1,53 +1,35 @@
 package hexlet.code.schemas;
 
-/**
- * Базовый абстрактный класс для всех схем валидации.
- *
- * @param <T> тип преданного значения, которое должно пройти валидацию.
- */
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Predicate;
+
 public abstract class BaseSchema<T> {
 
-    private boolean isRequired = false;
+    protected Map<String, Predicate<T>> checks = new LinkedHashMap<>();
+    protected boolean required = false;
 
-    /**
-     * Проверяет данные на валидность.
-     *
-     * @param value данные для проверки.
-     * @return уникальную проверку для данных в зависимости от их типа
-     * (Например: StringSchema.checkValid(value) для строк).
-     */
-    public boolean isValid(final T value) {
+    protected final void addCheck(String name, Predicate<T> validate) {
+        checks.put(name, validate);
+    }
+
+    public final boolean isValid(T value) {
         if (value == null) {
-            return !isRequired;
+            return !required;
         }
-        return this.checkValid(value);
+
+        for (Predicate<T> check : checks.values()) {
+            if (!check.test(value)) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
-    /**
-     * Метод добавляет проверку на NotNull.
-     *
-     * @return текущую схему.
-     */
     public BaseSchema<T> required() {
-        this.isRequired = true;
+        required = true;
         return this;
-    }
-
-    /**
-     * Абстрактный метод для дочерних классов, который реализовывает уникальную проверку для каждого типа данных.
-     *
-     * @param value данные для проверки на валидность.
-     * @return false || true в зависимости от того,валидна строка или нет.
-     */
-    protected abstract boolean checkValid(T value);
-
-    /**
-     * Геттер для поля isRequired класса BaseSchema.
-     *
-     * @return значение поля isRequired.
-     */
-    protected boolean getIsRequired() {
-        return this.isRequired;
     }
 
 }
