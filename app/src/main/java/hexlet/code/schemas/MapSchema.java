@@ -4,7 +4,9 @@ import java.util.Map;
 
 public final class MapSchema extends BaseSchema<Map<?, ?>> {
 
+    @Override
     public MapSchema required() {
+        this.setRequired(true);
         this.addCheck("required", data -> null != data);
         return this;
     }

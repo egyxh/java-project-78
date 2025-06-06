@@ -2,13 +2,15 @@ package hexlet.code.schemas;
 
 public final class NumberSchema extends BaseSchema<Number> {
 
+    @Override
     public NumberSchema required() {
+        this.setRequired(true);
         this.addCheck("required", num -> null != num);
         return this;
     }
 
     public NumberSchema positive() {
-        this.addCheck("positive", num -> null != num && num.doubleValue() > 0);
+        this.addCheck("positive", num -> num.doubleValue() > 0);
         return this;
     }
 
