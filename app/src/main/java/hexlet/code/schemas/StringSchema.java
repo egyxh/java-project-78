@@ -2,9 +2,7 @@ package hexlet.code.schemas;
 
 public final class StringSchema extends BaseSchema<String> {
 
-    @Override
     public StringSchema required() {
-        super.required();
         this.addCheck("required", str -> null != str && !str.isEmpty());
         return this;
     }
@@ -18,6 +16,5 @@ public final class StringSchema extends BaseSchema<String> {
         this.addCheck("contains", str -> null != str && str.contains(substring));
         return this;
     }
-
 
 }
