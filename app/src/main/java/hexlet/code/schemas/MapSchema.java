@@ -4,15 +4,13 @@ import java.util.Map;
 
 public final class MapSchema extends BaseSchema<Map<?, ?>> {
 
-    @Override
     public MapSchema required() {
         this.setRequired(true);
-        this.addCheck("required", data -> null != data);
         return this;
     }
 
     public MapSchema sizeof(final int size) {
-        this.addCheck("sizeof", data -> null != data && data.size() == size);
+        this.addCheck("sizeof", data -> data.size() == size);
         return this;
     }
 

@@ -27,8 +27,6 @@ public abstract class BaseSchema<T> {
         return true;
     }
 
-    public abstract BaseSchema<T> required();
-
     public final void setRequired(boolean value) {
         this.isRequired = value;
     }
