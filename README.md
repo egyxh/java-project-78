@@ -13,3 +13,31 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=egyxh_java-project-78&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=egyxh_java-project-78)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=egyxh_java-project-78&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=egyxh_java-project-78)
 
+# Валидатор данных
+
+Небольшая Java библиотека для валидации данных
+Поддерживает:
+	Строки (String)
+	Числа (целые и с плавающей точкой)
+	Структуры Map (так же со вложенными проверками для пар по ключу)
+
+### Возможности:
+	- Валидация строк: required(), minLength(int), contains(String).
+	- Валидация чисел: required(), positive(), range(int min, max).
+	- Валидация Map: required(), sizeof(int), shape(Map<String, BaseSchema<?>>). 
+
+### Требования:
+	Java 17+
+	Gradle 8+
+### Сборка и тесты
+
+Сборка проекта:
+	```bash
+	./gradlew build
+	```
+Запуск тестов:
+	```bash
+	./gradlew test
+	```
+
+
